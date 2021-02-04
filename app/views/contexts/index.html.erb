@@ -3,18 +3,20 @@
     <div class="col-md-2 col-xs-0" ></div>
     <div class="col-md-2 col-xs-1">
       <%= link_to "投稿する！",new_context_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to "ユーザ検索",new_context_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to "カテゴリー",new_context_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to "ユーザ検索",users_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to "投稿の検索",users_path, class: "btn mb-3 btn-outline-info index_button"%>
       <%= link_to new_context_path, class: "btn mb-3 btn-outline-info index_button" do%>
-      <i class="far fa-heart"></i> お気に入り
+        <i class="far fa-heart"></i> お気に入り
       <% end %>
     </div>
     <div class="col-md-6 col-xs-10 mb-5">
     <% @contexts.each do |context| %>
       <div class="card m-1" style="width: 25.2rem;">
         <div class="flex-row">
-          <img src=<%= context.user.image %> class = "icon_image" width="30px" height="30px">
-          <%= context.user.username%>
+          <%= link_to user_path(context.user.id) do %>
+            <%= render :partial => "layouts/profile_img", :locals=> {user: context.user} %>
+            <%= context.user.username%>
+          <% end %>
           </div>
         <%= link_to image_tag(context.context_img.gallery.to_s,), context_path(context.id), class:"bd-placeholder-img card-img-top", width: "100%", height:"180",preserveAspectRatio:"xMidYMid slice",  focusable:"false" ,role:"img" %>
         <div class="card-body">

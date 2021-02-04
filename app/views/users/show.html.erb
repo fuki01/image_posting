@@ -1,11 +1,11 @@
 <div>
   <div  class="my-context-width">
-  <p><img src=<%= @user.image %> class = "icon_image" width="30px" height="30px">
+  <%= render :partial => "layouts/profile_img", :locals=> {user: @user} %>
   <%= @user.username %></p>
   <% if current_user.id == @user.id%>
-  <%= link_to "ユーザ編集",edit_user_registration_path(current_user.id), method: :get,class: "button"%>
+  <%= link_to "ユーザ編集",edit_user_registration_path(current_user.id), method: :get,class: "btn", rele: "button"%>
   <%else%>
-  <button type="button" class="btn btn-outline-primary">Primary</button>
+  <button type="button" class="btn btn-outline-primary">フォローする</button>
   <% end %>
   <div class="row">
     <% @contexts.each do |context| %>

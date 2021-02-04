@@ -15,11 +15,9 @@
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="/contexts">IMAGE POSTING</a>
         <% if user_signed_in?	%>
-
       <li class="nav-item dropdown" style="margin-right:50px">
-
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src=<%= current_user.image %> class = "icon_image" width="30px" height="30px">
+          <%= render :partial => "layouts/profile_img", :locals=> {user: current_user} %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "マイページ",user_path(current_user.id),class:"dropdown-item"%>
