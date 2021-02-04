@@ -1,0 +1,13 @@
+  <p class="form-group field">
+    <%= c.label :内容, class: "control-label"%>
+    <%= c.text_area :body, class: "form-control", value: @context.body  %>
+  </p>
+    <p class="form-group field">
+    <%= c.label :画像, class: "control-label" %>
+    <%= c.file_field :context_img, value: @context.context_img %>
+  </p>
+    <p class="form-group field">
+    <%= c.label :カテゴリー, class: "control-label" %>
+    <%= c.text_field :category, class: "form-control", value:@context.category %>
+  </p>
+  <%= c.submit "登録する", class: "btn btn-primary" %>

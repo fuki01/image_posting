@@ -1,0 +1,6 @@
+<h3 class="text-center ">投稿</h3>
+  <div class="text-center context" >
+    <%= form_with url: contexts_path do |c|%>
+    <%= render :partial => "layouts/form", :locals=> {:c => c} %>
+  </div>
+<% end %>

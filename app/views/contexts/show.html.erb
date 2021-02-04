@@ -1,0 +1,5 @@
+  <p><%= @context.body%></p>
+  <%= image_tag(@context.context_img.full.to_s) %>
+  <p><%= @context.category%></p>
+  <%= link_to "削除",context_path(@context.id), method: :delete%>
+
