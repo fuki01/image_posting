@@ -3,6 +3,7 @@ class ContextsController < ApplicationController
 
   def index
     @contexts = Context.all
+    @contexts = Context.all.search(params[:search])
   end
 
   def show
@@ -43,7 +44,6 @@ class ContextsController < ApplicationController
       redirect_to contexts_path
     end
   end
-  
   private
   def context_params
     params.permit(:body, :context_img, :category)

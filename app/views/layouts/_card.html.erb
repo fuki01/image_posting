@@ -1,0 +1,18 @@
+<% contexts.each do |context| %>
+  <div class="card m-1" style="width: 25.2rem;">
+    <div class="flex-row">
+      <%= link_to user_path(context.user.id) do %>
+        <%= render :partial => "layouts/profile_img", :locals=> {user: context.user} %>
+        <%= context.user.username%>
+      <% end %>
+      </div>
+    <%= link_to image_tag(context.context_img.gallery.to_s,), context_path(context.id), class:"bd-placeholder-img card-img-top", width: "100%", height:"180",preserveAspectRatio:"xMidYMid slice",  focusable:"false" ,role:"img" %>
+    <div class="card-body">
+      <p class="card-text"><%= context.body%></p>
+      <p><%= context.category%></p>
+      <%= link_to "編集",edit_context_path(context.id), class: "btn btn-outline-success"%> 
+      <%= link_to "削除",context_path(context.id), method: :delete,class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}%><br>
+      <div class="text-right"><%= link_to new_context_path  style="text-align: right" do%><i class="far fa-heart fa-2x	"></i><%end%></div>
+    </div>
+  </div>
+<% end %>
