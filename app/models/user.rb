@@ -4,4 +4,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :image, ImageUploader
   has_many :context
+
 end

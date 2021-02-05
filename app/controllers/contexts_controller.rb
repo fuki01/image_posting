@@ -2,7 +2,6 @@ class ContextsController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    @contexts = Context.all
     @contexts = Context.all.search(params[:search])
   end
 
