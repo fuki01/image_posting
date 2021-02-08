@@ -43,6 +43,12 @@ class ContextsController < ApplicationController
       redirect_to contexts_path
     end
   end
+
+  def category
+    @contexts = Context.select(:category).distinct
+    @categorys = Context.all.category(params[:category])
+  end
+  
   private
   def context_params
     params.permit(:body, :context_img, :category)

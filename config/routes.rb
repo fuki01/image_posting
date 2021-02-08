@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'contexts#index'
   resources :users, only: [:index, :show]
-  resources :contexts
+  get 'contexts/category', to: 'contexts#category'
+  resources :contexts,only: [:create,:new,:edit, :update, :show, :destroy]
 end
