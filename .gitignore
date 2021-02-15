@@ -37,3 +37,4 @@ yarn-debug.log*
 vendor
 .vscode
 config/database.yml
+public/uploads/
