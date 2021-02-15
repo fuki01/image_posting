@@ -16,7 +16,7 @@ class ContextsController < ApplicationController
   def create
     @context = current_user.context.new(context_params)
     if @context.save
-      redirect_to contexts_path, alert: "登録しました。"
+      redirect_to root_path, alert: "登録しました。"
     else
       redirect_to new_context_path, alert: "登録できませんでした。"
     end
@@ -29,7 +29,7 @@ class ContextsController < ApplicationController
   def update
     @context = current_user.context.find(params[:id])
     if @context.update(context_params)
-      redirect_to contexts_path, alert: "編集しました。"
+      redirect_to root_path, alert: "編集しました。"
     else
       redirect_to edit_context_path, alert: "編集ができませんでした。"
     end
@@ -38,9 +38,9 @@ class ContextsController < ApplicationController
   def destroy
     @context = Context.find(params[:id])
     if @context.destroy
-      redirect_to contexts_path
+      redirect_to root_path
     else
-      redirect_to contexts_path
+      redirect_to root_path
     end
   end
 
