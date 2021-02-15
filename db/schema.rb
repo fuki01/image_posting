@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_152136) do
+ActiveRecord::Schema.define(version: 2021_02_15_214031) do
+
+  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.bigint "context_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["context_id"], name: "index_comments_on_context_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "contexts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -47,4 +57,6 @@ ActiveRecord::Schema.define(version: 2021_02_03_152136) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "contexts"
+  add_foreign_key "comments", "users"
 end

@@ -7,6 +7,8 @@ class ContextsController < ApplicationController
 
   def show
     @context = Context.find(params[:id])
+    @comments = @context.comments
+    @comment = current_user.comments.new
   end
 
   def new

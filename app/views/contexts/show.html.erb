@@ -1,4 +1,4 @@
-<div class="">
+<div>
 <div class="card mx-auto card-style-solo">
   <div class="flex-row">
     <%= link_to user_path(@context.user.id) do %>
@@ -14,5 +14,24 @@
     <%= link_to "削除",context_path(@context.id), method: :delete,class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}%><br>
     <div class="text-right"><%= link_to new_context_path  style="text-align: right" do%><i class="far fa-heart fa-2x	"></i><%end%></div>
   </div>
+  <div class="comment-area" style="padding: 10px;">
+    <p>コメント</p>
+    <%= form_with model:[@context, @comment], method: :post do |f| %>
+      <%= f.text_area :body, class: "form-control" %>
+      <%= f.hidden_field :context_id, value: @context.id %>
+      <%= f.submit '送信', class: "btn btn-secondary m-1" %>
+    <% end %>
+    <% @comments.each do |comment| %>
+      <div class="comment m-3">
+        <%= link_to user_path(comment.user.id) do %>
+        <%= render :partial => "layouts/profile_img", :locals=> {user: comment.user} %>
+        <%= comment.user.username %>
+        <% end %>
+        <%= comment.body %>
+        <%= comment.created_at.to_s(:datetime_jp) %><br>
+      </div>
+    <% end %>
+  </div>
 </div>
+
 </div>

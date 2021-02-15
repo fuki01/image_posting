@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :image, ImageUploader
   has_many :context
+  has_many :comments
   def self.search(search)
     search ? where("username LIKE ?", "%#{search}%") : all
 end

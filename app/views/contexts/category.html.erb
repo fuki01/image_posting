@@ -1,17 +1,16 @@
 <div class="container context">
-
   <div class="row">
-    <div class="col-md-2 col-xs-0" ></div>
+    <div class="col-md-1 col-xs-0" ></div>
       <%= render :partial => "layouts/nav"%>
-    <div class="col-md-6 col-xs-10 mb-5 context-card">
+    <div class="context-card">
       <% @contexts.each do |c| %>
-    <%=link_to "#{c.category}", contexts_category_path(category: "#{c.category}"),class:"btn m-1 btn-success"%>
-  <% end %>
-        <% if params[:category] %>
-            <div class="context-card">
-                <%= render :partial => "layouts/card", :locals=> {contexts: @categorys} %>
-            </div>
-        <% end %>
+        <%=link_to "#{c.category}", contexts_category_path(category: "#{c.category}"),class:"btn m-1 btn-success"%>
+      <% end %>
+      <% if params[:category] %>
+          <div class="context-card">
+              <%= render :partial => "layouts/card", :locals=> {contexts: @categorys} %>
+          </div>
+      <% end %>
     </div>
     <div class="col-md-2 col-xs-1"></div>
   </div>
