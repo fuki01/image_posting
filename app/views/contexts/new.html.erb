@@ -1,6 +1,14 @@
-<h3 class="text-center ">投稿</h3>
-  <div class="text-center context" >
-    <%= form_with url: contexts_path do |c|%>
-    <%= render :partial => "layouts/form", :locals=> {:c => c} %>
+<div class="container context">
+  <div class="row">
+    <div class="col-md-2 col-xs-0" ></div>
+      <%= render :partial => "layouts/nav"%>
+    <div class="col-md-6 col-xs-10 mb-5 context-card">
+      <h3 class="text-center ">投稿</h3>
+
+      <%= form_with url: contexts_path do |c|%>
+      <%= render :partial => "layouts/form", :locals=> {:c => c} %>
+      <% end %>
+    </div>
+    <div class="col-md-2 col-xs-1"></div>
   </div>
-<% end %>
+</div>

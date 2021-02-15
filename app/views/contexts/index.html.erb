@@ -1,26 +1,18 @@
 <div class="container context">
-    <form action="/contexts" method="get">
-    <div class="input-group rounded" >
-        <input type="search" name="search" id="form1" class="form-control" placeholder="検索" aria-label="検索" aria-describedby="search-addon" />
-        <button type="submit" class="btn ">
-        <i class="fas fa-search"></i>
-        </button>
-    </div>
-    </form>
   <div class="row">
     <div class="col-md-2 col-xs-0" ></div>
-    <div class="col-md-2 col-xs-1 context-nav">
-      <%= link_to "投稿する！",new_context_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to "フォローユーザの投稿",users_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to "ユーザ検索",users_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to "カテゴリー",users_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to new_context_path, class: "btn mb-3 btn-outline-info index_button" do%>
-        <i class="far fa-heart"></i> お気に入りリスト
-      <% end %>
-    </div>
-    <div class="col-md-6 col-xs-10 mb-5 context-card">
-      <%= render :partial => "layouts/card", :locals=> {contexts: @contexts} %>
+      <%= render :partial => "layouts/nav"%>
+    <div class="context-card">
+      <form action="/" method="get">
+      <div class="input-group rounded" >
+          <input type="search" name="search" id="form1" class="form-control" placeholder="検索" aria-label="検索" aria-describedby="search-addon" />
+          <button type="submit" class="btn ">
+          <i class="fas fa-search"></i>
+          </button>
       </div>
+      </form>
+      <%= render :partial => "layouts/card", :locals=> {contexts: @contexts} %>
+    </div>
     <div class="col-md-2 col-xs-1"></div>
   </div>
 </div>

@@ -1,20 +1,39 @@
-<div class="col-5">
-<form action="/users" method="get">
-<div class="input-group rounded">
-    <input type="search" name="search" id="form1" class="form-control" placeholder="検索" aria-label="検索" aria-describedby="search-addon" />
-    <button type="submit" class="btn ">
-    <i class="fas fa-search"></i>
-    </button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 col-xs-0" ></div>
+    <div class="col-md-2 col-xs-1 context-nav" style=" width: 400px;">
+      <%= link_to "ホーム",     contexts_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to "投稿する！",  new_context_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to "フォロー",    users_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to "ユーザ検索",  users_path, class: "btn mb-3 btn-info index_button"%>
+      <%= link_to "カテゴリー",  contexts_category_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to new_context_path, class: "btn mb-3 btn-outline-info index_button" do%>
+      <i class="far fa-heart"></i> お気に入り
+      <% end %>
+    </div>
+    <div class="context-card">
+    <form action="/users" method="get">
+    <div class="input-group rounded">
+        <input type="search" name="search" id="form1" class="form-control" placeholder="検索" aria-label="検索" aria-describedby="search-addon" />
+        <button type="submit" class="btn ">
+        <i class="fas fa-search"></i>
+        </button>
+    </div>
+    </form>
+    <table class="table  users-table" >
+    <% @users.each do |user|%>
+    <tr>
+      <td>
+      <%= link_to user_path(user.id) do%>
+      <%= render :partial => "layouts/profile_img", :locals=> {user: user} %>
+      <%= user.username%>
+      <% end %>
+      <%= link_to "フォロー", users_path, class: "btn m-1 btn-info index_button"%>
+      </td>
+    </tr>
+    <% end %>
+    </table>
+    </div>
+    <div class="col-md-2 col-xs-1"></div>
+  </div>
 </div>
-</form>
-</div>
-<table class="table table-striped">
-<% @users.each do |user|%>
-<tr>
-  <td>
-  <%= render :partial => "layouts/profile_img", :locals=> {user: user} %>
-  <%= user.username%>
-  </td>
-</tr>
-<% end %>
-</table>
