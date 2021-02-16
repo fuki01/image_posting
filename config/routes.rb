@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'contexts#index'
   resources :users, only: [:index, :show]
   get 'contexts/category', to: 'contexts#category'
+  get 'likes/:id', to: 'likes#show', as: "like_show"
   resources :contexts,only: [:create,:new,:edit, :update, :show, :destroy] do
     resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy]
   end
 end

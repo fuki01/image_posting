@@ -1,0 +1,17 @@
+<div class="container context">
+    <div class="row">
+        <div class="col-md-1 col-xs-0"></div>
+            <%= render :partial => "layouts/nav"%>
+        <div  class="list">
+        <p>お気に入り一覧</p>
+        <div class="row like_list">
+            <% @likes.each do |like| %>
+            <div>
+                <%= link_to image_tag(like.context_img.gallery.to_s,width:"150px",class:"m-1"), context_path(like.id),
+                            preserveAspectRatio:"xMidYMid slice",focusable:"false" ,role:"img",class: "thumbnail"%>
+            </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
+</div>

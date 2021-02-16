@@ -5,6 +5,7 @@ class Context < ApplicationRecord
   validates :body,        presence: true,     length: {maximum:200}
   belongs_to :user, foreign_key: "user_id"
   has_many :comments
+  has_many :likes, dependent: :destroy
   def self.search(search)
     search ? where("body OR category LIKE ?", "%#{search}%") : all
   end

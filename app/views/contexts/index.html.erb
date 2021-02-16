@@ -6,9 +6,7 @@
       <form action="/" method="get">
       <div class="input-group rounded" >
           <input type="search" name="search" id="form1" class="form-control" placeholder="検索" aria-label="検索" aria-describedby="search-addon" />
-          <button type="submit" class="btn ">
-          <i class="fas fa-search"></i>
-          </button>
+          <button type="submit" class="btn "><i class="fas fa-search"></i></button>
       </div>
       </form>
       <%= render :partial => "layouts/card", :locals=> {contexts: @contexts} %>

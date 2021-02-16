@@ -17,7 +17,11 @@
       <%= link_to "削除",context_path(context.id), method: :delete,class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}%><br>
       <div class="textContainer">
       <div class="text-left m-2"><%= link_to context_path(context.id) do %><i class="far fa-comment fa-2x"></i><%= context.comments.count %><%end%></div>
-      <div class="text-right m-2"><%= link_to new_context_path  style="text-align: right" do%><i class="far fa-heart fa-2x"></i><%end%></div>
+      <div class="text-right m-2">
+      <div id="like_<%= context.id %>">
+        <%= render "likes/like", context: context %>
+      </div>
+      </div>
       </div>
     </div>
   </div>

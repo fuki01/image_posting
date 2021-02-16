@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_214031) do
+ActiveRecord::Schema.define(version: 2021_02_15_232948) do
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "body"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_02_15_214031) do
     t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
   end
 
+  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "context_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["context_id"], name: "index_likes_on_context_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,4 +68,6 @@ ActiveRecord::Schema.define(version: 2021_02_15_214031) do
 
   add_foreign_key "comments", "contexts"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "contexts"
+  add_foreign_key "likes", "users"
 end
