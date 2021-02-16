@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
     def show
-        likes = Likes.where(user_id: current_user.id).order(created_at: :desc).pluck(:context_id)
+        likes = Like.where(user_id: params[:id]).order(created_at: :desc).pluck(:context_id)
         @likes = Context.find(likes)
     end
     def create
