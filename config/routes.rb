@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'contexts/category', to: 'contexts#category'
   resources :contexts,only: [:create,:new,:edit, :update, :show, :destroy] do
     resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy, :show]
   end
 end

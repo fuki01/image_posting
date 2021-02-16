@@ -5,6 +5,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :context
   has_many :comments
+  has_many :likes, dependent: :destroy
   def self.search(search)
     search ? where("username LIKE ?", "%#{search}%") : all
 end
