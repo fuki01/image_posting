@@ -3,12 +3,7 @@
     <div class="col-md-1 col-xs-0" ></div>
       <%= render :partial => "layouts/nav"%>
     <div class="context-card">
-    <form action="/users" method="get">
-    <div class="input-group rounded">
-      <input type="search" name="search" id="form1" class="form-control" placeholder="検索" aria-label="検索" aria-describedby="search-addon" />
-      <button type="submit" class="btn "><i class="fas fa-search"></i></button>
-    </div>
-    </form>
+    フォロワー一覧
     <table class="table  users-table" >
     <% @users.each do |user|%>
     <tr>
@@ -17,7 +12,6 @@
       <%= render :partial => "layouts/profile_img", :locals=> {user: user} %>
       <%= user.username%>
       <% end %>
-      <%= render :partial => "users/follow_button", :locals=> {user: user} %>
       </td>
     </tr>
     <% end %>

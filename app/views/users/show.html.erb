@@ -2,10 +2,12 @@
   <div  class="my-context-width">
   <%= render :partial => "layouts/profile_img", :locals=> {user: @user} %>
   <%= @user.username %></p>
+  <%= link_to "フォロー中#{@followings.count }", follows_user_path %>
+  <%= link_to "フォロワー#{@followers.count}",   followers_user_path %>
   <% if current_user.id == @user.id%>
-  <%= link_to "ユーザ編集",edit_user_registration_path(current_user.id), method: :get,class: "btn", rele: "button"%>
+  <%= button_to "ユーザ編集",edit_user_registration_path(current_user.id), method: :get,class: "btn btn-primary", rele: "button"%>
   <%else%>
-  <button type="button" class="btn btn-outline-primary">フォローする</button>
+      <%= render :partial => "users/follow_button", :locals=> {user: @user} %>
   <% end %>
   <div class="row">
     <% @contexts.each do |context| %>

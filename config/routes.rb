@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'contexts#index'
-  resources :users, only: [:index, :show]
-  get 'contexts/category', to: 'contexts#category'
-  get 'likes/:id', to: 'likes#show', as: "like_show"
-  resources :contexts,only: [:create,:new,:edit, :update, :show, :destroy] do
-    resources :comments, only: [:create]
-    resources :likes, only: [:create, :destroy]
+  get 'likes/:id',            to: 'likes#show',      as: "like_show"
+  devise_for :users
+  resources :users,         only: [:index, :show] do
+    resource :relationships,only: [:create, :destroy]
+    get :follows,             on: :member
+    get :followers,           on: :member
+  end
+  get 'contexts/category',    to: 'contexts#category'
+  get 'contexts/follow',      to: 'contexts#follow'
+  resources :contexts,      only: [:create, :new, :edit, :update, :show, :destroy] do
+    resources :comments,    only: [:create]
+    resources :likes,       only: [:create, :destroy]
   end
 end

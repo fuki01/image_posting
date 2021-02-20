@@ -50,6 +50,10 @@ class ContextsController < ApplicationController
     @contexts = Context.select(:category).distinct
     @categorys = Context.all.category(params[:category])
   end
+
+  def follow
+    @contexts = Context.where(user_id: [*current_user.following_ids])
+  end
   
   private
   def context_params

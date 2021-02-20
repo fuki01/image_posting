@@ -1,7 +1,7 @@
     <div class="col-md-2 col-xs-1 context-nav" style=" width: 400px;">
       <%= link_to "ホーム",     root_path, class: "btn mb-3 btn-outline-info index_button"%>
       <%= link_to "投稿する！",  new_context_path, class: "btn mb-3 btn-outline-info index_button"%>
-      <%= link_to "フォロー",    users_path, class: "btn mb-3 btn-outline-info index_button"%>
+      <%= link_to "フォロー投稿",    contexts_follow_path, class: "btn mb-3 btn-outline-info index_button"%>
       <%= link_to "ユーザ検索",  users_path, class: "btn mb-3 btn-outline-info index_button"%>
       <%= link_to "カテゴリー",  contexts_category_path, class: "btn mb-3 btn-outline-info index_button"%>
       <%= link_to like_show_path(current_user.id), class: "btn mb-3 btn-outline-info index_button" do%>

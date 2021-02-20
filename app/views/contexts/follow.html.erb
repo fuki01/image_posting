@@ -1,0 +1,11 @@
+<div class="container context">
+  <div class="row">
+    <div class="col-md-1 col-xs-0" ></div>
+      <%= render :partial => "layouts/nav"%>
+    <div class="context-card">
+      フォローユーザーの投稿
+      <%= render :partial => "layouts/card", :locals=> {contexts: @contexts} %>
+    </div>
+    <div class="col-md-2 col-xs-1"></div>
+  </div>
+</div>
