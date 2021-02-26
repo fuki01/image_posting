@@ -5,6 +5,8 @@
     <div class="context-card">
       フォローユーザーの投稿
       <%= render :partial => "layouts/card", :locals=> {contexts: @contexts} %>
+          <%= paginate @contexts %>
+
     </div>
     <div class="col-md-2 col-xs-1"></div>
   </div>

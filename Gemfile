@@ -24,6 +24,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
   gem 'pry-rails'
+  gem 'faker'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
@@ -31,3 +32,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
