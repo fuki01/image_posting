@@ -2,7 +2,7 @@ class ContextsController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    @contexts = Context.all.search(params[:search])
+    @contexts = Context.all.search(params[:search]).page(params[:page]).per(5)
   end
 
   def show
@@ -47,12 +47,12 @@ class ContextsController < ApplicationController
   end
 
   def category
-    @contexts = Context.select(:category).distinct
+    @contexts = Context.select(:category).distinct.page(params[:page]).per(50)
     @categorys = Context.all.category(params[:category])
   end
 
   def follow
-    @contexts = Context.where(user_id: [*current_user.following_ids])
+    @contexts = Context.where(user_id: [*current_user.following_ids]).page(params[:page]).per(5)
   end
   
   private
