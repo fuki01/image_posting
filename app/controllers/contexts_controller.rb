@@ -2,7 +2,7 @@ class ContextsController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    @contexts = Context.all.search(params[:search]).page(params[:page]).per(5)
+    @contexts = Context.all.order(created_at: "DESC").search(params[:search]).page(params[:page]).per(5)
   end
 
   def show
