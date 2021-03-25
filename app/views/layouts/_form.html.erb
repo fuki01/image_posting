@@ -1,6 +1,8 @@
+<%= javascript_pack_tag 'context/count' %>
   <p class="form-group field">
     <%= c.label :内容, class: "control-label"%>
-    <%= c.text_area :body, class: "form-control", value: @context.body  %>
+    |<span id="counter">残り200文字</span>
+    <%= c.text_area :body, class: "form-control", id: "input-text-body", value: @context.body,rows: 7  %>
   </p>
   <p class="form-group field">
     <%= c.label :画像, class: "control-label" %>
@@ -8,6 +10,11 @@
   </p>
   <p class="form-group field">
     <%= c.label :カテゴリー, class: "control-label" %>
-    <%= c.text_field :category, class: "form-control", value:@context.category %>
+    |<span id="category">残り10文字</span>
+    <%= c.text_field :category, class: "form-control", id: "input-text-category", value:@context.category %>
   </p>
   <%= c.submit "登録する", class: "btn btn-primary" %>
+
+  <script>
+
+  </script>
