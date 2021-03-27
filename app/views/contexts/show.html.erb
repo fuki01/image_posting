@@ -10,9 +10,25 @@
   <div class="card-body">
     <p class="card-text"><%= @context.body%></p>
     <p><%= @context.category%></p>
+    <% if current_user.id == @context.user.id%>
     <%= link_to "編集",edit_context_path(@context.id), class: "btn btn-outline-success"%> 
     <%= link_to "削除",context_path(@context.id), method: :delete,class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}%><br>
-    <div class="text-right"><%= link_to new_context_path  style="text-align: right" do%><i class="far fa-heart fa-2x	"></i><%end%></div>
+    <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 text-center">
+          <%= link_to new_context_path  style="text-align: right" do%><i class="far fa-heart fa-2x	"></i><%end%>
+        </div>
+        <div class="col-4 text-center">
+          <a href="https://twitter.com/intent/tweet?text=<%= page_title %> &url=<%= request.url %>" target=”_blank rel="noopener noreferrer"><i class="fab fa-twitter fa-2x"></i></a>
+        </div>
+        <div class="col-4 text-center">
+          <a href="http://www.facebook.com/share.php?u=<%= request.url %>&t=<%= page_title %>" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-square fa-2x" style="color:#007bff"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="comment-area" style="padding: 10px;">
     <p>コメント</p>
