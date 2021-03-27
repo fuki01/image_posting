@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'contexts#index'
   get 'likes/:id',            to: 'likes#show',      as: "like_show"
   devise_for :users
