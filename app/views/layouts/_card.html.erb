@@ -13,7 +13,7 @@
       <p class="link"><%= link_to "詳細", context_path(context.id)%></p>
       </p>
       <p><%= context.category%></p>
-      <% if context.id == current_user.id %>
+      <% if !current_user.nil? && context.id == current_user.id %>
       <%= link_to "編集",edit_context_path(context.id), class: "btn btn-outline-success"%> 
       <%= link_to "削除",context_path(context.id), method: :delete,class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}%><br>
       <% end %>

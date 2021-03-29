@@ -1,11 +1,18 @@
-<% if !Like.exists?(user_id: current_user.id, context_id: context.id) %>
-  <%= link_to context_likes_path(context.id), method: :post, remote: true, class:"like-btn" do %>
-    <i class="far fa-heart fa-2x"></i>
-    <%= context.likes.count %>
+<% if !current_user.nil? %>
+  <% if !Like.exists?(user_id: current_user.id, context_id: context.id) %>
+    <%= link_to context_likes_path(context.id), method: :post, remote: true, class:"like-btn" do %>
+      <i class="far fa-heart fa-2x"></i>
+      <%= context.likes.count %>
+    <% end %>
+  <% else %>
+    <%= link_to context_like_path(context_id: context.id, id: context.likes[0].id), method: :delete, remote: true, class:"like-btn" do %>
+      <i class="fas fa-heart fa-2x"></i>
+      <%= context.likes.count %>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to context_like_path(context_id: context.id, id: context.likes[0].id), method: :delete, remote: true, class:"like-btn" do %>
-    <i class="fas fa-heart fa-2x"></i>
+  <%= link_to user_session_path, class:"like-btn" do %>
+    <i class="far fa-heart fa-2x"></i>
     <%= context.likes.count %>
   <% end %>
 <% end %>
