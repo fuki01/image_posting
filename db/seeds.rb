@@ -1,22 +1,18 @@
-100.times do |n|
-    username = Faker::Name.name
-    email    = Faker::Internet.email
-    password = "password"
-    User.create!(
-        username: username,
-        email:    email,
-        password: password,
-        password_confirmation: password,
-    )
+require "csv"
+
+CSV.foreach('db/csv/sample_seed_user.csv', headers: true) do |row|
+  User.create!(
+    email:                  Faker::Internet.email,
+    username:               row['username'],
+    password:               row['password'],
+    password_confirmation:  row['password']
+  )
 end
-100.times do |n|
-    user_id  = rand(2..80)
-    body     = "sample text"
-    category = Faker::Creature::Animal.name
-    Context.create!(
-        user_id:     user_id,
-        body:        body,
-        category:    category,
-        context_img: open("./app/assets/images/dog.jpg")
-    )
+CSV.foreach('db/csv/sample_seed_context.csv', headers: true) do |row|
+  Context.create!(
+    user_id:     row['user_id'],
+    body:        row['body'],
+    category:    row['category'],
+    context_img: open("./app/assets/sample_images/ファイル #{rand(1..144)}.jpeg")
+  )
 end
