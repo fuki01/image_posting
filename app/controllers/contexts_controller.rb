@@ -8,9 +8,7 @@ class ContextsController < ApplicationController
   def show
     @context = Context.find(params[:id])
     @comments = @context.comments
-    if !current_user.nil?
-    @comment = current_user.comments.new
-    end
+    @comment = current_user.comments.new unless current_user.nil?
   end
 
   def new
