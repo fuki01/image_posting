@@ -37,3 +37,5 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 gem 'rails-i18n'
 gem 'rails_admin'
+gem 'rspec-rails'
+gem "factory_bot_rails"
