@@ -6,7 +6,7 @@
         <%= context.user.username%>
       <% end %>
       </div>
-    <%= link_to image_tag(context.context_img.gallery.to_s,), context_path(context.id), class:"bd-placeholder-img card-img-top", width: "100%", height:"180",preserveAspectRatio:"xMidYMid slice",  focusable:"false" ,role:"img" %>
+    <%= link_to image_tag(context.context_img.gallery.to_s,), context_path(context.id), class:"bd-placeholder-img card-img-top", id: "show-img", width: "100%", height:"180",preserveAspectRatio:"xMidYMid slice",  focusable:"false" ,role:"img" %>
     <div class="card-body">
       <p class="card-text">
       <%= wordCount context.body %>
