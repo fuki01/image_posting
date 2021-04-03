@@ -1,7 +1,7 @@
 <% contexts.each do |context| %>
   <div class="card m-1 card-style" style="">
     <div class="flex-row">
-      <%= link_to user_path(context.user.id) do %>
+      <%= link_to user_path(context.user.id), class: "show_user" do %>
         <%= render :partial => "layouts/profile_img", :locals=> {user: context.user} %>
         <%= context.user.username%>
       <% end %>
