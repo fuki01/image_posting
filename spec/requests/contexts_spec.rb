@@ -1,21 +1,22 @@
 require 'rails_helper'
-RSpec.feature "Contexts", type: :feature do
+RSpec.describe "Contexts", type: :feature do
   before do
     ActiveRecord::Base.logger = Logger.new(STDOUT)
   end
+
   it 'Contextが投稿ができること' do
     user = FactoryBot.create(:user)
     visit root_path
     login user
-    expect{
-      click_on   "投稿する！"
+    expect {
+      click_on "投稿する！"
       context_create
     }.to change(user.context, :count).by(1)
   end
 
   it 'Contextが削除できること' do
     user = FactoryBot.create(:user)
-    expect{
+    expect {
       FactoryBot.create(:context, user: user)
       visit root_path
       login user
