@@ -6,7 +6,6 @@ RSpec.feature "Contexts", type: :feature do
   it 'Contextが投稿ができること' do
     user = FactoryBot.create(:user)
     visit root_path
-    click_on "ログイン"
     login user
     expect{
       click_on   "投稿する！"
@@ -19,7 +18,6 @@ RSpec.feature "Contexts", type: :feature do
     expect{
       FactoryBot.create(:context, user: user)
       visit root_path
-      click_on "ログイン"
       login user
       click_on "show-img"
       click_on "削除"
@@ -30,7 +28,6 @@ RSpec.feature "Contexts", type: :feature do
     user = FactoryBot.create(:user)
     context = FactoryBot.create(:context, user: user)
     visit root_path
-    click_on "ログイン"
     login user
     click_on "show-img"
     click_on "編集"
