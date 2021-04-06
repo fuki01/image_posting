@@ -31,6 +31,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 Rails.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger = Logger.new(STDOUT)
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include LoginMacros
