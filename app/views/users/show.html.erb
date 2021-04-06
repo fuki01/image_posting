@@ -5,7 +5,7 @@
   <%= link_to "フォロー中#{@followings.count }", follows_user_path %>
   <%= link_to "フォロワー#{@followers.count}",   followers_user_path %>
   <% if current_user.id == @user.id%>
-  <%= button_to "ユーザ編集",edit_user_registration_path(current_user.id), method: :get,class: "btn btn-primary", rele: "button"%>
+  <%= button_to "ユーザー編集",edit_user_registration_path(current_user.id), method: :get,class: "btn btn-primary", rele: "button"%>
   <%else%>
       <%= render :partial => "users/follow_button", :locals=> {user: @user} %>
   <% end %>

@@ -1,6 +1,5 @@
 FactoryBot.define do
-  factory :comment do
-    body { "sample text" }
+  factory :like do
     association :user
     association :context
   end
