@@ -5,9 +5,7 @@ class LikesController < ApplicationController
     end
     def create
         @context = Context.find(params[:context_id])
-        if @context.user_id != current_user.id
-          @like = Like.create(user_id: current_user.id, context_id: @context.id)
-        end
+        @like = Like.create(user_id: current_user.id, context_id: @context.id)
       end
     def destroy
         @context = Context.find(params[:context_id])
