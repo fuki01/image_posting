@@ -35,10 +35,11 @@
       <%= f.hidden_field :context_id, value: @context.id %>
       <%= f.submit '送信', class: "btn btn-secondary m-1" %>
     <% end %>
-  <% end %>
+  <% else %>
   コメント入力には
   <a href="http://localhost:3000/contexts/follow">ログイン</a>
   が必要です
+  <% end %>
     <% @comments.each do |comment| %>
       <div class="comment m-3">
         <%= link_to user_path(comment.user.id) do %>
