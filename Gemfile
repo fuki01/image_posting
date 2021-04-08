@@ -31,6 +31,11 @@ group :development do
   gem 'rubocop-rspec'
   gem 'pry-rails'
   gem 'faker'
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-rbenv-vars', '~> 0.1'
+  gem 'capistrano3-puma', '~> 5.0', '>= 5.0.4'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
