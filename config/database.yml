@@ -17,6 +17,7 @@ test:
 
 production:
   <<: *default
-  database: img_production
-  username: img
-  password: <%= ENV['IMG_DATABASE_PASSWORD'] %>
+  database: animalbox_production
+  username: root
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
