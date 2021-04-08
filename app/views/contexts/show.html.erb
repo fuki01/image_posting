@@ -5,14 +5,14 @@
       <%= render :partial => "layouts/profile_img", :locals=> {user: @context.user} %>
       <%= @context.user.username%>
     <% end %>
-    </div>
+  </div>
   <%= link_to image_tag(@context.context_img.full.to_s), context_path(@context.id), class:"bd-placeholder-img card-img-top", width: "100%", height:"180",preserveAspectRatio:"xMidYMid slice",  focusable:"false" ,role:"img" %>
   <div class="card-body">
     <p class="card-text"><%= @context.body%></p>
     <p><%= @context.category%></p>
-    <% if current_user.id == @context.user.id%>
+    <% if !current_user.nil? && current_user.id == @context.user.id%>
     <%= link_to "編集",edit_context_path(@context.id), class: "btn btn-outline-success"%> 
-    <%= link_to "削除",context_path(@context.id), method: :delete,class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}%><br>
+    <%= link_to "削除",context_path(@context.id), method: :delete, class: "btn btn-outline-danger", data: { confirm: '削除しますか？'}, id: "delete" %><br> 
     <% end %>
     <div class="container" width="50px">
       <div class="row">
@@ -28,12 +28,18 @@
     </div>
   </div>
   <div class="comment-area" style="padding: 10px;">
+  <% if !current_user.nil? %>
     <p>コメント</p>
     <%= form_with model:[@context, @comment], method: :post do |f| %>
       <%= f.text_area :body, class: "form-control" %>
       <%= f.hidden_field :context_id, value: @context.id %>
       <%= f.submit '送信', class: "btn btn-secondary m-1" %>
     <% end %>
+  <% else %>
+  コメント入力には
+  <a href="http://localhost:3000/contexts/follow">ログイン</a>
+  が必要です
+  <% end %>
     <% @comments.each do |comment| %>
       <div class="comment m-3">
         <%= link_to user_path(comment.user.id) do %>

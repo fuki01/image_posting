@@ -8,7 +8,7 @@ class ContextImgUploader < CarrierWave::Uploader::Base
     ', 'Center']
   end
   version :full do
-    process :resize_to_limit => [500, 500]
+    process :resize_and_pad => [500, 500, '#ffffff', 'Center']
   end
 def store_dir
   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

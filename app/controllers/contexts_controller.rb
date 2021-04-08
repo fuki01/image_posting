@@ -1,5 +1,5 @@
 class ContextsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:index, :show, :category]
 
   def index
     @contexts = Context.all.order(created_at: "DESC").search(params[:search]).page(params[:page]).per(5)
@@ -8,7 +8,7 @@ class ContextsController < ApplicationController
   def show
     @context = Context.find(params[:id])
     @comments = @context.comments
-    @comment = current_user.comments.new
+    @comment = current_user.comments.new unless current_user.nil?
   end
 
   def new
