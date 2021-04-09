@@ -40,3 +40,5 @@ config/database.yml
 public/uploads/
 .DS_Store
 .idea
+
+/config/credentials/production.key
