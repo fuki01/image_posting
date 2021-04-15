@@ -1,4 +1,3 @@
-
 default: &default
   adapter: mysql2
   encoding: utf8
@@ -8,18 +7,22 @@ default: &default
   socket: /tmp/mysql.sock
   host: <%= ENV['MYSQL_HOST'] || 'localhost' %>
 
-
 development:
   <<: *default
-  database: img_development
+  database: animalbox_development
+  host: db
+  username: root
+  password: password
 
 test:
   <<: *default
-  database: img_test
+  database: animalbox_test
+  host: db
+  username: root
+  password: password
 
 production:
   <<: *default
   database: animalbox_production
-  username: root
-  password: password
-  host: host
+  username: animalbox
+  password: <%= ENV['ANIMALBOX_DATABASE_PASSWORD'] %>
